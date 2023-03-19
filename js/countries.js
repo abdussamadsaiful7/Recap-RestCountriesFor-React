@@ -1,12 +1,11 @@
 const loadCountries = () =>{
-    URL  =`https://restcountries.com/v3.1/all`;
-    fetch(URL)
+    fetch(`https://restcountries.com/v3.1/all`)
     .then(res =>res.json())
     .then(data=> displayCountries(data))
 }
 
 displayCountries = (countries)=>{
-    //console.log(countries);
+    console.log(countries[0]);
     const countriesHTML =countries.map(country =>getCountryHTML(country));
     //console.log(countriesHTML)
     const container = document.getElementById('countries');
@@ -15,8 +14,9 @@ displayCountries = (countries)=>{
 
 const getCountryHTML = country =>{
     return `
-        <div>
+        <div class="country">
             <h2>${country.name.common}<h2>
+            <img src="${country.flags.png}">
         </div>
     `
 }
