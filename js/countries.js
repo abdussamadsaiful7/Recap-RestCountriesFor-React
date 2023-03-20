@@ -68,14 +68,71 @@ const getCountryHTML = ({name, flags, capital, continents, languages}) =>{
   
 }
 
-const languagesData = (languages)=>{
-    if(languages){
-        const arrayLanguages = Object.values(languages).join(' ');
-        for(let i =0; i<arrayLanguages.length; i++){
-            return arrayLanguages;
-        }
-    }
-}
+// const languagesData = (languages)=>{
+//     if(languages){
+//         const arrayLanguages = Object.values(languages).join(' ');
+//         for(let i =0; i<arrayLanguages.length; i++){
+//             return arrayLanguages;
+//         }
+//     }
+// }
+
+const languagesData = languages => {
+  if (languages) {
+    const keys = Object.keys(languages);
+    const li = keys
+      .map(key => {
+        return `
+        <li>${languages[key]}</li>
+        `;
+      })
+      .join(" ");
+    return li;
+  }
+};
 
 
 loadCountries();
+
+
+
+// ---------------Using Object.keys()------------------
+// const languagesData = languages => {
+//   if (languages) {
+//     const keys = Object.keys(languages);
+//     const li = keys
+//       .map(key => {
+//         return `
+//         <li>${languages[key]}</li>
+//         `;
+//       })
+//       .join(" ");
+//     return li;
+//   }
+// };
+// ---------------Using Object.values()------------------
+// const languagesData = languages => {
+//   if (languages) {
+//     const values = Object.values(languages);
+//     const li = values
+//       .map(value => {
+//         return `
+//         <li>${value}</li>
+//         `;
+//       })
+//       .join(" ");
+//     return li;
+//   }
+// };
+// ---------------Using for in loop()------------------
+// const languagesData = languages => {
+//   if (languages) {
+//     let element = "";
+//     for (let key in languages) {
+//       element += `
+//         <li>${languages[key]}</li>
+//         `;
+//     }
+//     return element;
+//   }
+// };
