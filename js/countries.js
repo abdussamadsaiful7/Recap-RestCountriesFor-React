@@ -57,19 +57,25 @@ const getCountryHTML = ({name, flags, capital, continents, languages}) =>{
     //const {name, flags, capital, continents, languages} = country;
     
     return `
-        <div class="country">
+        <div style="width:320px;" class="country">
             <h2>${name.common}<h2>
             <img src="${flags.png}">
             <p>Capital: ${capital}</p>
-            <p>Language: ${languages}</p>
+            <p>Language: ${languagesData(languages)}</p>
             <p>Region: ${continents}</p>
         </div>
     `;
   
 }
 
-
-
+const languagesData = (languages)=>{
+    if(languages){
+        const arrayLanguages = Object.values(languages).join(' ');
+        for(let i =0; i<arrayLanguages.length; i++){
+            return arrayLanguages;
+        }
+    }
+}
 
 
 loadCountries();
